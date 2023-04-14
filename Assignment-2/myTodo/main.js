@@ -31,6 +31,8 @@ function renderTodoList() {
     if (!todoElement) {
       todoElement = createTodoElement(v);
       todoElements[v.id] = todoElement;
+    } else {
+      todoElement.getElementsByClassName("name")[0].innerText = v.name;
     }
     todoList.appendChild(todoElement);
     todoInput.value = "";
@@ -58,6 +60,7 @@ function createTodoElement(todoObj) {
   const newTodo = document.createElement("li");
   newTodo.innerText = todoObj.name;
   newTodo.classList.add("todo-item");
+  newTodo.classList.add("name");
   todoDiv.appendChild(newTodo);
 
   //Completed Button
@@ -91,6 +94,18 @@ function createTodoElement(todoObj) {
     saveTodos();
   });
   todoDiv.appendChild(starButton);
+
+  //edit  Button
+  const editButton = document.createElement("button");
+  editButton.innerHTML = '<i class="fa-solid fa-pencil"></i>';
+  editButton.classList.add("edit-btn");
+  editButton.addEventListener("click", (e) => {
+    const newname = prompt("Please enter your new name", todoObj.name);
+    todoObj.name = newname;
+    renderTodoList();
+    saveTodos();
+  });
+  todoDiv.appendChild(editButton);
 
   //Remove Button
   const trashButton = document.createElement("button");

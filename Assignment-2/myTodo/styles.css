@@ -81,6 +81,7 @@ form button:hover {
 
 .trash-btn,
 .complete-btn,
+.edit-btn,
 .star-btn {
   color: white;
   border: none;
@@ -91,6 +92,11 @@ form button:hover {
 
 .complete-btn {
   background: rgb(255, 200, 0);
+}
+
+.edit-btn {
+  background: white;
+  color: rgb(171, 171, 171);
 }
 
 .trash-btn {
